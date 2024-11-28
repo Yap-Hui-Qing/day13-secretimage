@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <h1>Hello, please login</h1>
+    
+    <form method="post" action="/secret" data-th-object="${user}">
+        <input type="hidden" value="SecretImage123" name="passphrase">
+        <input type="hidden" name="attempt" data-th-value="${attempt}">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td>
+                    <input type="text" data-th-field="*{name}">
+                    <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
+                        data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td>
+                    <input type="password" data-th-field="*{password}">
+                    <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}"
+                        data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Login</button> 
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
